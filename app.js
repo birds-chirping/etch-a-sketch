@@ -18,6 +18,7 @@ let gridSize = sizeSlider.value;
 console.log(gridSize)
 let selectedColor = '#FF0000';
 let squares = [];
+let random = false;
 
 
 
@@ -44,60 +45,69 @@ function createGrid(size) {
 }
 
 
-function changeColorOnHover(param) {
+function changeColorOnHover() {
     squares.forEach(square => {
         square.addEventListener('mouseover', changeColor);
     });
 
     function changeColor(e) {
-        if (param) {
-            changeSquareColor(e.target, param());
+        if (random === false) {
+            changeSquareColor(e.target, selectedColor);
         } else {
             changeSquareColor(e.target);
         }
+        
     };
 }
 
 
-function changeSquareColor(square, color=selectedColor) {
+function changeSquareColor(square, color=getColor()) {
     square.setAttribute('style', `background-color: ${color}`);
 }
 
-function pickRandomColors() {
+function pickRandomColor() {
     let randomColor = Math.floor(Math.random() * 360);
     return `hsl(${randomColor}, 100%, 50%)`
 }
 
 
+function getColor() {
+    random === false ? selectedColor : selectedColor = pickRandomColor(); 
+    return selectedColor;
+} 
 
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
 createGrid(gridSize);
 
-//----------------------------event listeners------------------------
+//----------------------------buttons------------------------
 
 //------------clear button:
 clearBtn.addEventListener('click', function() {
+    random = false;
+    selectedColor = '#FFFFFF';
     squares.forEach(function(e) {
-        changeSquareColor(e, '#FFFFFF');
+        changeSquareColor(e);
     });
+    selectedColor = '#FF0000';
 });
 
 //-------------random button:
 randomBtn.addEventListener('click', function() {
-    changeColorOnHover(pickRandomColors);
+    random = true;
 });
 
 //-------------default button:
 defaultBtn.addEventListener('click', function() {
-    changeColorOnHover();
+    random = false;
+    selectedColor = '#FF0000';
 });
 
 
 //-------------erase button:
 eraseBtn.addEventListener('click', function() {
-    changeColorOnHover();
+    random = false;
     selectedColor = '#FFFFFF';
 });
 
