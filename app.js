@@ -1,19 +1,23 @@
+// grid
 const gridContainer = document.querySelector('.grid-container');
 
+// buttons
 const clearBtn = document.getElementById('clear');
 const randomBtn = document.getElementById('random');
 const defaultBtn = document.getElementById('default');
 const eraseBtn = document.getElementById('erase');
 
-
+// size slider
 const sizeSlider = document.getElementById('size-range');
 const sizeValue = document.getElementById('size-value');
 
+// color 
 const hueSlider = document.getElementById('hue-range');
 const hueValue = document.getElementById('hue-value');
 const satSlider = document.getElementById('sat-range');
 const satValue = document.getElementById('sat-value');
-
+const lightSlider = document.getElementById('light-range');
+const lightValue = document.getElementById('light-value');
 
 const colorCanvas = document.getElementById('chosen-hue');
 
@@ -140,6 +144,11 @@ hueSlider.addEventListener('change', function() {
     satSlider.style.backgroundImage = `linear-gradient(to right, 
         hsl(${hue}, 0%, ${lightness}%),
         hsl(${hue}, 100%, ${lightness}%))`;
+
+    lightSlider.style.backgroundImage = `linear-gradient(to right, 
+        hsl(0, ${saturation}%, 0%),
+        hsl(${hue}, ${saturation}%, 50%),
+        hsl(0, ${saturation}%, 100%))`;
 })
 
 //-----------saturation slider:
@@ -149,10 +158,29 @@ satSlider.addEventListener('change', function() {
     saturation = this.value;
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);    
     selectedColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+    lightSlider.style.backgroundImage = `linear-gradient(to right, 
+        hsl(0, ${saturation}%, 0%),
+        hsl(${hue}, ${saturation}%, 50%),
+        hsl(0, ${saturation}%, 100%))`;
+})
+
+//-----------lightness slider:
+
+lightSlider.addEventListener('change', function() {
+    lightValue.textContent = this.value; 
+    lightness = this.value;
+    colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);    
+    selectedColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+    satSlider.style.backgroundImage = `linear-gradient(to right, 
+        hsl(${hue}, 0%, ${lightness}%),
+        hsl(${hue}, 100%, ${lightness}%))`;
+
 })
 
 
 // todo: 
 // arrange divs in body
-// allow picked color canvas to be clickable
+// darken function
 
