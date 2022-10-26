@@ -88,7 +88,8 @@ body {
 /* --------------------slider-------------------------- */
 
 .size-slider-container,
-.hue-slider-container {
+.hue-slider-container,
+.sat-slider-container {
     width: calc(80vmin + 60px);
     display: flex;
     justify-content: center;
@@ -167,6 +168,34 @@ body {
     height: 30px;
     border-radius: 4px;
 }
+
+
+/* ---------------saturation slider */
+.slider#sat-range {
+    background-color: transparent;
+    background-image: linear-gradient(to right, 
+    hsl(0, 0%, 50%),
+    hsl(0, 100%, 50%));
+    height: 20px;
+    width: 100%;
+}
+
+.slider#sat-range::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    background: #36362d;
+    width: 8px; 
+    height: 30px;
+    border-radius: 4px;
+}
+
+.slider#sat-range::-moz-range-thumb {
+    background: #36362d;
+    width: 8px; 
+    height: 30px;
+    border-radius: 4px;
+}
+
 
 /* -------------hue chosen color--------------- */
 

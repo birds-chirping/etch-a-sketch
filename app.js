@@ -8,9 +8,14 @@ const eraseBtn = document.getElementById('erase');
 
 const sizeSlider = document.getElementById('size-range');
 const sizeValue = document.getElementById('size-value');
+
 const hueSlider = document.getElementById('hue-range');
-const hueCanvas = document.getElementById('chosen-hue');
 const hueValue = document.getElementById('hue-value');
+const satSlider = document.getElementById('sat-range');
+const satValue = document.getElementById('sat-value');
+
+
+const colorCanvas = document.getElementById('chosen-hue');
 
 
 // starting settings
@@ -130,15 +135,24 @@ sizeSlider.addEventListener('change', function() {
 hueSlider.addEventListener('change', function() {
     hueValue.textContent = this.value; 
     hue = this.value;
-    hueCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);
+    colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);
+    selectedColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    satSlider.style.backgroundImage = `linear-gradient(to right, 
+        hsl(${hue}, 0%, ${lightness}%),
+        hsl(${hue}, 100%, ${lightness}%))`;
+})
+
+//-----------saturation slider:
+
+satSlider.addEventListener('change', function() {
+    satValue.textContent = this.value; 
+    saturation = this.value;
+    colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);    
     selectedColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 })
 
 
-
-
 // todo: 
-// add erase button
 // arrange divs in body
 // allow picked color canvas to be clickable
 
