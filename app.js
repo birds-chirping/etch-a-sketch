@@ -34,34 +34,39 @@ function createGrid(size) {
         gridContainer.appendChild(gridRow);
     } 
 
-    //--------------squares event listener----------------------
+    changeColorOnHover();
+}
+
+
+function changeColorOnHover() {
     squares.forEach(square => {
-        // console.log(square.id, selectedColor);
-        square.addEventListener('mouseover', changeSquareColor.bind(null, square, selectedColor))
+        square.addEventListener('mouseover', function(e) {changeSquareColor(e.target)});
     });
 }
 
-
-function changeSquareColor(square, color) {
+function changeSquareColor(square, color=selectedColor) {
     square.setAttribute('style', `background-color: ${color}`);
 }
 
-function clearCanvas() {
-    squares.forEach(square => changeSquareColor(square,'#FFF'));
-}
 
 
 //-------------------------------------------------------------------
+//-------------------------------------------------------------------
+
 createGrid(gridSize);
 
 //----------------------------event listeners------------------------
 
 //------------clear button:
-clearBtn.addEventListener('click', clearCanvas);
+clearBtn.addEventListener('click', function() {
+    squares.forEach(function(e) {
+        changeSquareColor(e, '#FFFFFF');
+    });
+});
+
     
 //------------size slider:
 sizeSlider.addEventListener('change', function() {
-    // console.log(this.value);
     gridSize = this.value;
     sizeValue.textContent = this.value;
     createGrid(gridSize);
@@ -74,11 +79,15 @@ hueSlider.addEventListener('change', function() {
     hue = `hsl(${this.value}, 100%, 50%)`;
     hueCanvas.setAttribute('style', `background-color: ${hue}`);
     console.log(hueCanvas);
+    selectedColor = hue;
 })
 
 
 
 
 // todo: 
-// add random color  
+// add random color button
+// add erase button
 // arrange divs in body
+// allow picked color canvas to be clickable
+

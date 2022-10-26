@@ -102,21 +102,8 @@ body {
     height: 10px;
 }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; 
-    appearance: none;
-    width: 20px; 
-    height: 20px;
-    border-radius: 15px;
-    cursor: pointer;
-}
 
-.slider::-moz-range-thumb {
-    width: 20px; 
-    height: 20px;
-    border-radius: 15px;
-    cursor: pointer;
-}
+/* ----------size slider----------- */
 
 .slider#size-range {
     background:#0b0835;
@@ -131,13 +118,25 @@ body {
 
 
 .slider#size-range::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
     background:#3f8a8c;
 }
 
 .slider#size-range::-moz-range-thumb {
     background:#3f8a8c;
+    width: 20px; 
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
+
+/* ----------hue slider----------- */
 
 .slider#hue-range {
     background-color: #e5340b;
@@ -154,19 +153,25 @@ body {
 }
 
 .slider#hue-range::-webkit-slider-thumb {
-    background: transparent;
-    border: 2px solid rgb(49, 49, 49);
-    outline: 4px solid rgb(49, 49, 49);
+    -webkit-appearance: none; 
+    appearance: none;
+    background: #36362d;
+    width: 8px; 
+    height: 30px;
+    border-radius: 4px;
 }
 
 .slider#hue-range::-moz-range-thumb {
-    background: transparent;
-    border: 2px solid rgb(49, 49, 49);
-    outline: 4px solid rgb(49, 49, 49);
+    background: #36362d;
+    width: 8px; 
+    height: 30px;
+    border-radius: 4px;
 }
+
+/* -------------hue chosen color--------------- */
 
 .hue-canvas{
     height:50px;
     width: 150px;
-    background-color: lightgray;
+    background-color: hsl(0, 100%, 50%);
 }
