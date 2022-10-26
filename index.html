@@ -20,6 +20,23 @@
     <div class="buttons">
         <button id="clear">CLEAR</button>
     </div>
+
+    <!-- size slider -->
+    
+    <div class="size-slider-container">
+        <input class="slider" id="size-range" type="range" min="1" max="50" value="16">
+        <div id="size-value">16</div>
+    </div>
+
+    <!-- hue slider -->
+    <div class="hue-slider-container">
+        <input class="slider" id="hue-range" type="range" min="0" max="360" value="0">
+        <div id="hue-value">0</div>
+    </div>
+
+    <div class="hue-canvas" id="chosen-hue"></div>
+
+
     <script src="app.js"></script>
 </body>
 </html>

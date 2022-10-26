@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: space-between; */
 }
 
 
@@ -48,6 +49,8 @@ body {
     height: 80vmin;
     width: 80vmin;
     margin-bottom: 50px;
+    border-top: 1px solid rgb(192, 192, 241);
+    border-right: 1px solid rgb(192, 192, 241);
 }
 
 /* @media screen and (orientation: landscape) {
@@ -70,15 +73,100 @@ body {
 .grid-row {
     flex: 1;
     display: flex;
+    
 }
 
 .square {
     flex: 1;
     background-color: white;
-    transition-delay: 0.2s;
+    border-left: 1px solid rgb(192, 192, 241);
+    border-bottom: 1px solid rgb(192, 192, 241);
+    /* transition-delay: 0.2s; */
 }
 
-.square:hover {
-    background-color: var(--color);
-    transition-delay: 0s;
+
+/* --------------------slider-------------------------- */
+
+.size-slider-container,
+.hue-slider-container {
+    width: calc(80vmin + 60px);
+    display: flex;
+    justify-content: center;
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    height: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px; 
+    height: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.slider#size-range {
+    background:#0b0835;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider#size-range:hover {
+    opacity: 0.9;
+}
+
+
+.slider#size-range::-webkit-slider-thumb {
+    background:#3f8a8c;
+}
+
+.slider#size-range::-moz-range-thumb {
+    background:#3f8a8c;
+}
+
+
+.slider#hue-range {
+    background-color: #e5340b;
+    background-image: linear-gradient(to right, 
+    hsl(0, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(360, 100%, 50%));
+    height: 20px;
+    width: 100%;
+}
+
+.slider#hue-range::-webkit-slider-thumb {
+    background: transparent;
+    border: 2px solid rgb(49, 49, 49);
+    outline: 4px solid rgb(49, 49, 49);
+}
+
+.slider#hue-range::-moz-range-thumb {
+    background: transparent;
+    border: 2px solid rgb(49, 49, 49);
+    outline: 4px solid rgb(49, 49, 49);
+}
+
+.hue-canvas{
+    height:50px;
+    width: 150px;
+    background-color: lightgray;
 }
