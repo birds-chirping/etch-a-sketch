@@ -15,10 +15,13 @@ const hueValue = document.getElementById('hue-value');
 
 // starting settings
 let gridSize = sizeSlider.value;
-console.log(gridSize)
 let selectedColor = '#FF0000';
 let squares = [];
 let random = false;
+let hue = 0;
+let saturation = 100;
+let lightness = 50;
+
 
 
 
@@ -66,8 +69,11 @@ function changeSquareColor(square, color=getColor()) {
 }
 
 function pickRandomColor() {
-    let randomColor = Math.floor(Math.random() * 360);
-    return `hsl(${randomColor}, 100%, 50%)`
+    let h = Math.floor(Math.random() * 360);
+    let s = Math.floor(Math.random() * 100);
+    let l = Math.floor(Math.random() * 100);
+       
+    return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
 
@@ -81,7 +87,7 @@ function getColor() {
 
 createGrid(gridSize);
 
-//----------------------------buttons------------------------
+//----------------------------event listeners------------------------
 
 //------------clear button:
 clearBtn.addEventListener('click', function() {
@@ -111,7 +117,6 @@ eraseBtn.addEventListener('click', function() {
     selectedColor = '#FFFFFF';
 });
 
-
     
 //------------size slider:
 sizeSlider.addEventListener('change', function() {
@@ -123,10 +128,10 @@ sizeSlider.addEventListener('change', function() {
 
 //------------hue slider:
 hueSlider.addEventListener('change', function() {
-    hueValue.textContent = this.value;
-    hue = `hsl(${this.value}, 100%, 50%)`;
-    hueCanvas.setAttribute('style', `background-color: ${hue}`);
-    selectedColor = hue;
+    hueValue.textContent = this.value; 
+    hue = this.value;
+    hueCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}%, ${lightness}%)`);
+    selectedColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 })
 
 
