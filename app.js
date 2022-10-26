@@ -2,6 +2,7 @@ const gridContainer = document.querySelector('.grid-container');
 
 const clearBtn = document.getElementById('clear');
 const randomBtn = document.getElementById('random');
+const defaultBtn = document.getElementById('default');
 
 
 const sizeSlider = document.getElementById('size-range');
@@ -84,7 +85,12 @@ clearBtn.addEventListener('click', function() {
 
 //-------------random button:
 randomBtn.addEventListener('click', function() {
-    changeColorOnHover(pickRandomColors)
+    changeColorOnHover(pickRandomColors);
+});
+
+//-------------default button:
+defaultBtn.addEventListener('click', function() {
+    changeColorOnHover();
 });
 
     
@@ -108,7 +114,6 @@ hueSlider.addEventListener('change', function() {
 
 
 // todo: 
-// add default color button
 // add erase button
 // arrange divs in body
 // allow picked color canvas to be clickable
