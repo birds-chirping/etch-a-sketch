@@ -3,6 +3,7 @@ const gridContainer = document.querySelector('.grid-container');
 const clearBtn = document.getElementById('clear');
 const randomBtn = document.getElementById('random');
 const defaultBtn = document.getElementById('default');
+const eraseBtn = document.getElementById('erase');
 
 
 const sizeSlider = document.getElementById('size-range');
@@ -92,6 +93,14 @@ randomBtn.addEventListener('click', function() {
 defaultBtn.addEventListener('click', function() {
     changeColorOnHover();
 });
+
+
+//-------------erase button:
+eraseBtn.addEventListener('click', function() {
+    changeColorOnHover();
+    selectedColor = '#FFFFFF';
+});
+
 
     
 //------------size slider:
