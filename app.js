@@ -10,6 +10,7 @@ const clearBtn = document.getElementById('clear');
 const randomBtn = document.getElementById('random');
 const defaultBtn = document.getElementById('default');
 const eraseBtn = document.getElementById('erase');
+const darkenBtn = document.getElementById('darken');
 
 // size slider
 const sizeSlider = document.getElementById('size-range');
@@ -30,6 +31,7 @@ let gridSize = sizeSlider.value;
 let selectedColor = '#FF0000';
 let squares = [];
 let random = false;
+let darken = false;
 let hue = 0;
 let saturation = '100%';
 let lightness = '50%';
@@ -47,6 +49,7 @@ function createGrid(size) {
             const square = document.createElement('div');
             square.setAttribute('class','square');
             square.setAttribute('id', `${id}`);
+            square.style.backgroundColor = '#FFFFFF';
             squares.push(square);
             gridRow.appendChild(square);
             id++;
@@ -62,13 +65,48 @@ function changeColorOnHover() {
     });
 
     function changeColor(e) {
-        if (random === false) {
-            changeSquareColor(e.target, selectedColor);
-        } else {
+        if (random === true) {
             changeSquareColor(e.target);
-        }
+        } else if (darken === true) {
+            const square = e.target;
+            const darkBg = square.getAttribute('darkened-bg');
+            let darkenRed;
+            let darkenBlue;
+            let darkenGreen;
+
+            let bgColor = square.style.backgroundColor;     // 
+            rgb = /^rgb\((\d+), (\d+), (\d+)\)$/;           // get r, g, b values
+            let match = bgColor.match(rgb);                 //
+
+            // Get 10% lightness of initial color
+            if (!square.getAttribute('darken-red') || bgColor != darkBg) {
+                darkenRed = `${Math.floor(match[1] / 10 + 1)}`;
+                darkenGreen = `${Math.floor(match[2] / 10 + 1)}`;
+                darkenBlue = `${Math.floor(match[3] / 10 + 1)}`;
+                square.setAttribute('darken-red', darkenRed);
+                square.setAttribute('darken-green', darkenGreen);
+                square.setAttribute('darken-blue', darkenBlue);
+                console.log('Primul');
+            } else {
+                darkenRed = square.getAttribute('darken-red');
+                darkenGreen = square.getAttribute('darken-green');
+                darkenBlue = square.getAttribute('darken-blue');
+                console.log('DOI');
+            }
+
+            // Darken background color with 10%
+            let red = Math.max(0, match[1] - darkenRed);
+            let green = Math.max(0, match[2] - darkenGreen);
+            let blue = Math.max(0, match[3] - darkenBlue);
+            let newBgColor = `rgb(${red}, ${green}, ${blue})`;
+            square.style.backgroundColor = newBgColor;
         
-    };
+            // Save darkened bg color for comparison with actual bg color
+            square.setAttribute('darkened-bg', newBgColor);
+        } else {
+            changeSquareColor(e.target, selectedColor);
+        }  
+    }
 }
 
 function changeSquareColor(square, color=getColor()) {
@@ -76,7 +114,9 @@ function changeSquareColor(square, color=getColor()) {
 }
 
 function getColor() {
-    random === false ? selectedColor : selectedColor = pickRandomColor(); 
+    random === true ? selectedColor = pickRandomColor() : 
+    darken === true ? selectedColor = darkenColor() :
+    selectedColor; 
     return selectedColor;
 } 
 
@@ -87,6 +127,7 @@ function pickRandomColor() {
        
     return `hsl(${h}, ${s}%, ${l}%)`;
 }
+
 
 //----------------------CSS variables:
 function changeColorValues(param, value) {
@@ -110,6 +151,7 @@ createGrid(gridSize);
 //------------clear button:
 clearBtn.addEventListener('click', function() {
     random = false;
+    darken = false;
     selectedColor = '#FFFFFF';
     squares.forEach(function(e) {
         changeSquareColor(e);
@@ -120,10 +162,13 @@ clearBtn.addEventListener('click', function() {
 //-------------random button:
 randomBtn.addEventListener('click', function() {
     random = true;
+    darken = false;
+    
 });
 
 //-------------default button:
 defaultBtn.addEventListener('click', function() {
+    darken = false;
     random = false;
     selectedColor = getLastUsedColor();
     
@@ -131,19 +176,27 @@ defaultBtn.addEventListener('click', function() {
 
 //-------------erase button:
 eraseBtn.addEventListener('click', function() {
+    darken = false;
     random = false;
     selectedColor = '#FFFFFF';
 });
 
-//------------size slider:
+//-------------darnek button:
+darkenBtn.addEventListener('click', function() {
+    random = false;
+    darken = true;
+});
+
+//------------sliders------------------------------------------
 sizeSlider.addEventListener('change', function() {
     gridSize = this.value;
     sizeValue.textContent = this.value;
     createGrid(gridSize);
 })
 
-//------------hue slider:
 hueSlider.addEventListener('change', function() {
+    darken = false;
+    random = false;
     hueValue.textContent = this.value; 
     hue = this.value;
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);
@@ -151,8 +204,9 @@ hueSlider.addEventListener('change', function() {
     changeColorValues('--hue', hue);        
 })
 
-//-----------saturation slider:
 satSlider.addEventListener('change', function() {
+    darken = false;
+    random = false;
     satValue.textContent = this.value; 
     saturation = `${this.value}%`;
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);    
@@ -160,8 +214,9 @@ satSlider.addEventListener('change', function() {
     changeColorValues('--sat', saturation);        
 })
 
-//-----------lightness slider:
 lightSlider.addEventListener('change', function() {
+    darken = false;
+    random = false;
     lightValue.textContent = this.value; 
     lightness = `${this.value}%`
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);    
