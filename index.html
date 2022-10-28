@@ -7,63 +7,100 @@
     <title>Etch-A-Sketch</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Corben:wght@400;700&family=Caladea:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="game-title">etch a sketch</h1>
 
-    <div class="container">        
-        <div class="grid-container"></div>
+
+    <div class="big-container">
+        <div class="title-btn-grid-container">
+            <!-- title -->
+            <div class="title-container">
+                <h1 class="game-title">etch a sketch</h1>
+            </div>
+            <!-- buttons and grid -->
+            <div class="btn-grid-container">
+
+               
+                <div class="left-panel">
+                    <!-- size slider -->
+                    <div class="size-panel">
+                        <div id="size-value">16</div>
+                        <div class="size-slider-wrapper"><input class="slider" id="size-range" type="range" min="1" max="50" value="16"></div>
+                        <!-- <div id="size-tag">grid size</div> -->
+                    </div>
+                    <div class="buttons">
+                    
+                        <div class="default-btn-cont">
+                            <button id="default"></button>
+                            <div>Default</div>
+                        </div>
+                    
+                        <div class="random-btn-cont">
+                            <button id="random"></button>
+                            <div>Random</div>
+                        </div>
+                    
+                        <div class="darken-btn-cont">
+                            <button id="darken"></button>
+                            <div>Darken</div>
+                        </div>
+                        <div class="erase-btn-cont">
+                            <button id="erase"></button>
+                            <div>Erase</div>
+                        </div>
+                        <div class="clear-btn-cont">
+                            <button id="clear"></button>
+                            <div>Clear</div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="grid-container"></div>
+            </div>
+        </div>
+
+
+        <!-- <div class="right-panel"> -->
+
+            <div class="color-container">
+
+
+
+                <div class="color-panel">
+
+
+                    <div class="color-sliders">
+                        <!-- hue slider -->
+                        <div class="hue-slider-container">
+                            <div id="hue-value">0</div>
+                            <input class="slider" id="hue-range" type="range" min="0" max="360" value="0">
+                        </div>
+                        <!-- saturation slider -->
+                        <div class="sat-slider-container">
+                            <div id="sat-value">100</div>
+                            <input class="slider" id="sat-range" type="range" min="0" max="100" value="100">
+                        </div>
+                        <!-- lightness slider -->
+                        <div class="light-slider-container">
+                            <div id="light-value">50</div>
+                            <input class="slider" id="light-range" type="range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+
+                        <!-- color sample -->
+                    <div class="hue-canvas" id="chosen-hue"></div>
+
+
+                </div>
+
+
+            </div>
+        <!-- </div> -->
+
     </div>
 
-    <!-- buttons -->
-    <div class="buttons">
-        <button id="clear">Clear</button>
-    </div>
-
-    <div class="buttons">
-        <button id="default">Default</button>
-    </div>
-
-    <div class="buttons">
-        <button id="random">Random</button>
-    </div>
-
-    <div class="buttons">
-        <button id="erase">Erase</button>
-    </div>
-
-    <div class="buttons">
-        <button id="darken">Darken</button>
-    </div>
-
-    <!-- size slider -->
-    
-    <div class="size-slider-container">
-        <input class="slider" id="size-range" type="range" min="1" max="50" value="16">
-        <div id="size-value">16</div>
-    </div>
-
-    <!-- hue slider -->
-    <div class="hue-slider-container">
-        <input class="slider" id="hue-range" type="range" min="0" max="360" value="0">
-        <div id="hue-value">0</div>
-    </div>
-
-    <!-- saturation slider -->
-    <div class="sat-slider-container">
-        <input class="slider" id="sat-range" type="range" min="0" max="100" value="100">
-        <div id="sat-value">100</div>
-    </div>
-
-    <!-- lightness slider -->
-    <div class="light-slider-container">
-        <input class="slider" id="light-range" type="range" min="0" max="100" value="50">
-        <div id="light-value">50</div>
-    </div>
-
-    <div class="hue-canvas" id="chosen-hue"></div>
 
 
     <script src="app.js"></script>

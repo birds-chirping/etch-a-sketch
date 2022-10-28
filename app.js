@@ -121,9 +121,9 @@ function getColor() {
 } 
 
 function pickRandomColor() {
-    let h = Math.floor(Math.random() * 360);
-    let s = Math.floor(Math.random() * 100);
-    let l = Math.floor(Math.random() * 100);
+    let h = Math.floor(Math.random() * 361);
+    let s = Math.floor(Math.random() * 101);
+    let l = Math.floor(Math.random() * 101);
        
     return `hsl(${h}, ${s}%, ${l}%)`;
 }
@@ -227,5 +227,5 @@ lightSlider.addEventListener('change', function() {
 
 // todo: 
 // arrange divs in body
-// darken function
+
 
