@@ -4,11 +4,15 @@
     --sat: 100%;
     --light: 50%;
     --gridsize: calc(80vmin + 60px);
+    --gap: 0.7rem;
 }
 
 * {
     box-sizing: border-box;
     font-size: 20px;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
 }
 
 /* ----------------------------------------------------- */
@@ -25,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: var(--gap);
 }
 
 /* -------------------title-btn-grid-------------------- */
@@ -32,12 +37,18 @@ body {
 .title-btn-grid-container {
     display: flex;
     flex-direction: column;
+    border: 3px solid blue;
+    gap: var(--gap);
+
 }
 
 .btn-grid-container {
     display:flex;
     flex-direction: column;
     align-items: center;
+    gap: var(--gap);
+    border: 3px solid red;
+
 }
 
 /* ---------------------title--------------------------- */
@@ -56,7 +67,7 @@ body {
     width: calc(80vmin + 60px);   
     text-align: center; 
     /* border: 1px solid pink; */
-    margin: 0;
+    /* margin: 0; */
 
 }
 
@@ -73,7 +84,7 @@ body {
     box-shadow: inset 3px 3px 5px rgba(70, 70, 70, 0.8),
                 inset -3px -3px 5px rgba(255, 255, 255, 0.5);
     padding: 7px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     border-radius: 7px;
     background-color: #ffe4b6;
     font-family: 'Caladea';
@@ -116,12 +127,12 @@ button:active, button:focus, button:hover {
 
 /* -----------left panel------------- */
 .left-panel {
-    /* border: 2px solid yellowgreen; */
+    border: 2px solid yellowgreen;
     display: flex;
-    gap: 1vh;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    gap: var(--gap);
 }
 
 
@@ -130,7 +141,7 @@ button:active, button:focus, button:hover {
         display: flex;
         flex-direction: column;
         max-width: 170px;
-        margin: 0px 25px;
+        /* margin: 0px 25px; */
         align-self: flex-end;
         /* border: 1px solid saddlebrown; */
     }
@@ -171,7 +182,6 @@ button:active, button:focus, button:hover {
         0 0 0 30px #3f8a8c;
     height: 80vmin;
     width: 80vmin;
-    margin-bottom: 50px;
     border-top: 1px solid rgb(192, 192, 241);
     border-right: 1px solid rgb(192, 192, 241);
     margin: 30px;
@@ -211,12 +221,13 @@ button:active, button:focus, button:hover {
     justify-content: space-evenly;
     width: calc(80vmin + 60px); 
     /* border: 1px solid salmon; */
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
     padding: 15px;
     border-radius: 5px;
     background-color: #ffe4b6;
     box-shadow: inset 3px 3px 5px rgba(70, 70, 70, 0.8),
                 inset -3px -3px 5px rgba(255, 255, 255, 0.5);
+    gap: 0.4rem;
 
 }
 
@@ -237,8 +248,8 @@ button:active, button:focus, button:hover {
     justify-content: space-between;
     width: 80%;
     height: 90px;
-    margin-left: 4px;
-    margin-right: 8px;
+    /* margin-left: 4px;
+    margin-right: 8px; */
     /* border: 1px solid red; */
 }
 
@@ -335,6 +346,7 @@ button:active, button:focus, button:hover {
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 2px solid saddlebrown;
 
     }
     .color-panel {
@@ -357,10 +369,10 @@ button:active, button:focus, button:hover {
     display: flex;
     justify-content: stretch;
     align-items: center;
-    margin: 10px 0px 25px;
+    /* margin: 10px 0px 25px; */
     height: 50px;
-    padding: 7px;
-    padding-left: 15px;
+    padding: 0.35rem;
+    padding-left: 0.75rem;
     border-radius: 5px;
     background-color: #ffe4b6;
     /* border: 2px solid red; */
@@ -420,6 +432,7 @@ button:active, button:focus, button:hover {
     .title-btn-grid-container {
         flex: 5;
         /* border: 3px solid saddlebrown; */
+        /* height: 100vh ; */
         height: 100vh;
     }
 
@@ -464,8 +477,8 @@ button:active, button:focus, button:hover {
         justify-content: space-around;
         max-width: 170px;
         height: 50px;
-        margin: 0px;
-        margin-top: 10px;
+        /* margin: 0px; */
+        /* margin-top: 10px; */
 
         padding: 10px;
         /* border: 2px dashed #e5340b; */
