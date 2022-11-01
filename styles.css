@@ -203,6 +203,7 @@ button:active, button:focus, button:hover {
 
 
 /* ---------color-panel----------- */
+
 .color-panel {
     display: flex;
     flex-direction: row;
@@ -219,6 +220,16 @@ button:active, button:focus, button:hover {
 
 }
 
+.color-values {
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    justify-content: space-around;
+    align-items: flex-end;
+    min-width: 2rem;
+}
+
 .color-sliders {
     flex:10;
     display: flex;
@@ -227,6 +238,7 @@ button:active, button:focus, button:hover {
     width: 80%;
     height: 90px;
     margin-left: 4px;
+    margin-right: 8px;
     /* border: 1px solid red; */
 }
 
@@ -244,7 +256,8 @@ button:active, button:focus, button:hover {
 .hue-canvas{
     flex:1;
     align-self: stretch;
-    margin: 4px;
+    min-width: 2rem;
+    /* margin: 4px; */
     background-color: hsl(0, 100%, 50%);
 }
 
