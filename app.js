@@ -90,12 +90,10 @@ function changeColorOnHover() {
                 square.setAttribute('darken-red', darkenRed);
                 square.setAttribute('darken-green', darkenGreen);
                 square.setAttribute('darken-blue', darkenBlue);
-                console.log('Primul');
             } else {
                 darkenRed = square.getAttribute('darken-red');
                 darkenGreen = square.getAttribute('darken-green');
                 darkenBlue = square.getAttribute('darken-blue');
-                console.log('DOI');
             }
 
             // Darken background color with 10%
@@ -132,6 +130,15 @@ function pickRandomColor() {
     return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
+function selectBtn (btn) {
+    buttons.forEach(function(b) {
+        if (b === btn) {
+            b.classList.add('selected-btn');
+        } else {
+            b.classList.remove('selected-btn');
+        }
+    });
+}
 
 //----------------------CSS variables:
 function changeColorValues(param, value) {
@@ -152,31 +159,20 @@ createGrid(gridSize);
 
 //----------------------------event listeners------------------------
 
-function selectBtn (btn) {
-    buttons.forEach(function(b) {
-        if (b === btn) {
-            b.classList.add('selected-btn');
-        } else {
-            b.classList.remove('selected-btn');
-        }
-    });
-}
+//------------------buttons----------------------------
 
-//------------clear button:
 clearBtn.addEventListener('click', function() {
     squares.forEach(function(e) {
         changeSquareColor(e, '#FFFFFF');
     });
 });
 
-//-------------random button:
 randomBtn.addEventListener('click', function() {
     random = true;
     darken = false;
     selectBtn(randomBtn);
 });
 
-//-------------default button:
 defaultBtn.addEventListener('click', function() {
     darken = false;
     random = false;
@@ -184,7 +180,6 @@ defaultBtn.addEventListener('click', function() {
     selectBtn(defaultBtn);
 });
 
-//-------------erase button:
 eraseBtn.addEventListener('click', function() {
     darken = false;
     random = false;
@@ -192,14 +187,14 @@ eraseBtn.addEventListener('click', function() {
     selectBtn(eraseBtn);
 });
 
-//-------------darnek button:
 darkenBtn.addEventListener('click', function() {
     random = false;
     darken = true;
     selectBtn(darkenBtn);
 });
 
-//------------sliders------------------------------------------
+//------------------sliders----------------------------
+
 sizeSlider.addEventListener('change', function() {
     gridSize = this.value;
     sizeValue.textContent = this.value;
@@ -238,4 +233,3 @@ lightSlider.addEventListener('change', function() {
     changeColorValues('--light', lightness);  
     selectBtn(defaultBtn);
 })
-
