@@ -135,6 +135,7 @@ body {
     appearance: none;
     width: var(--thumb-size); 
     height: var(--thumb-size);
+    border: none;
     border-radius: 50%;
     cursor: pointer;
     background: black;
@@ -143,9 +144,11 @@ body {
 }
 
 .slider#size-range::-moz-range-thumb {
+    appearance: none;
     background:black;
     width: var(--thumb-size); 
     height: var(--thumb-size);
+    border: none;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -377,6 +380,7 @@ button:hover, .selected-btn {
     background: #36362d;
     width: 1vw; 
     height: var(--thumb-size);
+    border: none;
     border-radius: 4px;
 }
 
@@ -385,6 +389,7 @@ button:hover, .selected-btn {
 .slider#light-range::-moz-range-thumb  {
     background: #36362d;
     width: 1vw; 
+    border: none;
     height: var(--thumb-size);
     border-radius: 4px;
 }

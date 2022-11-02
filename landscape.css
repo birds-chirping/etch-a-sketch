@@ -138,21 +138,13 @@ button:hover, .selected-btn {
 .slider#hue-range::-webkit-slider-thumb,
 .slider#sat-range::-webkit-slider-thumb,
 .slider#light-range::-webkit-slider-thumb  {
-    -webkit-appearance: none; 
-    appearance: none;
-    background: #36362d;
     width: 1vh; 
-    height: 4vh;
-    border-radius: 4px;
 }
 
 .slider#hue-range::-moz-range-thumb,
 .slider#sat-range::-moz-range-thumb,
 .slider#light-range::-moz-range-thumb  {
-    background: #36362d;
     width: 1vh; 
-    height: 4vh;
-    border-radius: 4px;
 }
 
 /* ----------- Color --- V A L U E S ------------ */
