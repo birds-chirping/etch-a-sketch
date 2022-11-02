@@ -190,7 +190,7 @@ button {
 
 }
 
-button:active, button:focus, button:hover {
+button:hover, .selected-btn {
     margin-right: -0.8vmin;
     margin-bottom: -0.8vmin;
     margin-left: 0.8vmin;
@@ -204,8 +204,8 @@ button:active, button:focus, button:hover {
                 inset 0.7vmin 0.7vmin 0.8vmin rgba(70, 70, 70, 0.12); */
     background-color: #5355dbb7;
     box-shadow: none;
-
 }
+
 
 .clear-btn-cont,
 .default-btn-cont,

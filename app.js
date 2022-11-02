@@ -12,6 +12,7 @@ const defaultBtn = document.getElementById('default');
 const eraseBtn = document.getElementById('erase');
 const darkenBtn = document.getElementById('darken');
 
+
 // size slider
 const sizeSlider = document.getElementById('size-range');
 const sizeValue = document.getElementById('size-value');
@@ -29,12 +30,15 @@ const colorCanvas = document.getElementById('chosen-hue');
 // starting settings
 let gridSize = sizeSlider.value;
 let selectedColor = '#FF0000';
+const buttons = [defaultBtn, randomBtn, darkenBtn, eraseBtn];
+defaultBtn.classList.add('selected-btn');
 let squares = [];
 let random = false;
 let darken = false;
 let hue = 0;
 let saturation = '100%';
 let lightness = '50%';
+
 
 
 
@@ -148,22 +152,28 @@ createGrid(gridSize);
 
 //----------------------------event listeners------------------------
 
+function selectBtn (btn) {
+    buttons.forEach(function(b) {
+        if (b === btn) {
+            b.classList.add('selected-btn');
+        } else {
+            b.classList.remove('selected-btn');
+        }
+    });
+}
+
 //------------clear button:
 clearBtn.addEventListener('click', function() {
-    random = false;
-    darken = false;
-    selectedColor = '#FFFFFF';
     squares.forEach(function(e) {
-        changeSquareColor(e);
+        changeSquareColor(e, '#FFFFFF');
     });
-    selectedColor = getLastUsedColor();
 });
 
 //-------------random button:
 randomBtn.addEventListener('click', function() {
     random = true;
     darken = false;
-    
+    selectBtn(randomBtn);
 });
 
 //-------------default button:
@@ -171,7 +181,7 @@ defaultBtn.addEventListener('click', function() {
     darken = false;
     random = false;
     selectedColor = getLastUsedColor();
-    
+    selectBtn(defaultBtn);
 });
 
 //-------------erase button:
@@ -179,12 +189,14 @@ eraseBtn.addEventListener('click', function() {
     darken = false;
     random = false;
     selectedColor = '#FFFFFF';
+    selectBtn(eraseBtn);
 });
 
 //-------------darnek button:
 darkenBtn.addEventListener('click', function() {
     random = false;
     darken = true;
+    selectBtn(darkenBtn);
 });
 
 //------------sliders------------------------------------------
@@ -202,6 +214,7 @@ hueSlider.addEventListener('change', function() {
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);
     selectedColor = `hsl(${hue}, ${saturation}, ${lightness})`;
     changeColorValues('--hue', hue);        
+    selectBtn(defaultBtn);
 })
 
 satSlider.addEventListener('change', function() {
@@ -211,7 +224,8 @@ satSlider.addEventListener('change', function() {
     saturation = `${this.value}%`;
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);    
     selectedColor = `hsl(${hue}, ${saturation}, ${lightness})`;
-    changeColorValues('--sat', saturation);        
+    changeColorValues('--sat', saturation);  
+    selectBtn(defaultBtn);
 })
 
 lightSlider.addEventListener('change', function() {
@@ -221,11 +235,7 @@ lightSlider.addEventListener('change', function() {
     lightness = `${this.value}%`
     colorCanvas.setAttribute('style', `background-color: hsl(${hue}, ${saturation}, ${lightness})`);    
     selectedColor = `hsl(${hue}, ${saturation}, ${lightness})`;
-    changeColorValues('--light', lightness);        
+    changeColorValues('--light', lightness);  
+    selectBtn(defaultBtn);
 })
-
-
-// todo: 
-// arrange divs in body
-
 
