@@ -63,6 +63,13 @@
     flex-direction: column;
     max-width: 100%;
     /* border: 3px solid saddlebrown; */
+
+}
+
+button:active, button:focus, button:hover {
+    margin: 0;
+    margin-left: -0.8vmin;
+    margin-bottom: -0.8vmin;
 }
 
 .clear-btn-cont,
@@ -70,6 +77,8 @@
 .random-btn-cont,
 .erase-btn-cont,
 .darken-btn-cont {
+    /* border: 1px solid greenyellow; */
+
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
