@@ -1,24 +1,39 @@
 :root {
     --side-width: 30vh;
+    --grid-size-l: 70vh;
+    --border-space: 4vh;
 }
 
-/* --------------------- title --------------------- */
+/* ---------------------------------------------------------------------- */
+/* ------------------------------ T I T L E ----------------------------- */
+/* ---------------------------------------------------------------------- */
+
 .title-container {
     /* border: 1px solid saddlebrown; */
-    width: calc(70vh + 60px);
+    width: calc(var(--grid-size-l) + calc(var(--border-space) * 2));
+    align-self: flex-start;
+    margin-left: calc(var(--side-width) + var(--gap));
 }
 
-/* ---------------- game container ----------------- */
+/* ---------------------------------------------------------------------- */
+/* ------------------- G A M E --- C O N T A I N E R -------------------- */
+/* ---------------------------------------------------------------------- */
+
 .game-container {
     flex-direction: row;
     align-items: stretch;
+    margin-bottom: 5vmin;
 }
 
-/* ---------------------left panel------------------ */
+/* -------------------------------------------------- */
+/* -------------- L E F T --- P A N E L ------------- */
+/* -------------------------------------------------- */
 .left-panel {
     max-width: var(--side-width);
 }
-/* ------------ size slider ---------------------------- */
+
+
+/* ---------- S I Z E --- s l i d e r ----------- */
 .size-panel {
     justify-content: space-around;
     max-width: 100%;
@@ -26,7 +41,7 @@
 }
 
 .size-slider-wrapper {
-    flex: 8;
+    width: 80%;
     /* border: 3px solid fuchsia; */
 }
 
@@ -40,15 +55,13 @@
 
 
 
-/* ---------buttons ------------------ */
+/* -------------- B U T T O N S ------------- */
+
 .buttons {
     flex: 1;
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    /* justify-self: stretch; */
-    /* margin: 0px 25px; */
-
     /* border: 3px solid saddlebrown; */
 }
 
@@ -65,12 +78,18 @@
 }
 
 
-/* ---------------grid container-------------- */
+/* -------------------------------------------------- */
+/* -----------------  G  R  I  D  ------------------- */
+/* -------------------------------------------------- */
 .grid-container {
-    height: 70vh;
-    width: 70vh;
+    height: var(--grid-size-l);
+    width: var(--grid-size-l);
 }
-/*----------------color-panel-------------*/
+
+
+/* -------------------------------------------------- */
+/* -------------- C O L O R --P A N E L ------------- */
+/* -------------------------------------------------- */
 .color-container {
     /* border: 5px solid salmon; */
     width: 20vh;
@@ -84,15 +103,14 @@
 
 }
 .color-panel {
-    width: calc(70vh + 60px);
+    width: calc(var(--grid-size-l) + calc(var(--border-space) * 2));
     height: 17vh;
     padding: 2vh;
-    transform: rotate(270deg) ;
-   
-    /* border: 2px solid salmon; */
-    
+    transform: rotate(270deg);
+    /* border: 2px solid salmon; */   
 }
 
+/* -------- H S L  ---  S L I D E R S ----------- */
 .color-sliders {    
     width: 58vh;
     height: 100%;
@@ -128,6 +146,7 @@
     border-radius: 4px;
 }
 
+/* ----------- Color --- V A L U E S ------------ */
 .color-values > div {
     font-size: 4vh;
     font-family: 'Caladea', serif;
